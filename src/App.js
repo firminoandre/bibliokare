@@ -1,14 +1,15 @@
 import React from "react";
-import { Cards } from "./Cards";
+import { Cards } from "./Components/Cards";
 import './index.css';
-import UserContext from "./UserContext";
-import { Header } from "./Header";
-import useFetch from "./useFetch";
+import UserContext from "./Hooks/UserContext";
+import { Header } from "./Components/Header";
+import useFetch from "./Hooks/useFetch";
+
 
 
 
 const App = () => {
-  const [allBooks, setAllBooks] = React.useState(null);
+  
   const {request, data, loading, error} = useFetch();
 
   
