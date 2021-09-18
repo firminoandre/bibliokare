@@ -4,6 +4,8 @@ import './index.css';
 import UserContext from "./Hooks/UserContext";
 import { Header } from "./Components/Header";
 import useFetch from "./Hooks/useFetch";
+import { Loading } from "./Components/Loading";
+import { Error } from "./Components/Error";
 
 
 
@@ -16,8 +18,8 @@ const App = () => {
   React.useEffect(() => {
     request('https://ibook-cataline.herokuapp.com/books')
   }, [])
-    if(error) return <p>{error}</p>
-    if(loading) return <div className="text-white font-extrabold">Carregando...</div>
+    if(error) return <Error />
+    if(loading) return <Loading />
     return (
       <>
       
