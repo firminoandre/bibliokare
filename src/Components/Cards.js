@@ -1,6 +1,8 @@
 import React from 'react'
 import UserContext from '../Hooks/UserContext'
 import '../index.css'
+import { Modal } from './Modal'
+
 
 
 
@@ -13,8 +15,13 @@ export const Cards = () => {
    function getId({target}){
      setModal(!modal)
      setIndice(parseInt(target.value))
-     console.log(indice)
    }
+
+   function exit(){
+       setModal(false)
+   }
+
+   
 
     return (
     <>
@@ -42,26 +49,12 @@ export const Cards = () => {
             </div>
         )}
     </div>
-    {modal && (
-        <div className="modal">
-          <div onClick={getId} className="overlay"></div>
-          <div className="overscroll-auto modal-content mt-10">
-              <div className="grid justify-items-center">
-            <h2 className="font-extrabold text-gray-900 dark:text-white text-lg mt-4">{books[indice].title}</h2>
-            <p className="font-bold text-gray-900 dark:text-white  mt-2">{books[indice].author}</p>
-            </div>
-            <img src={books[indice].cover} className="rounded-lg shadow-md" width="100" height="100"/>
-            <p className="text-justify mt-5">{books[indice].description}</p>
-            
-            <button onClick={getId} type="button" class="py-2 px-4 mt-4 bg-indigo-600 hover:bg-indigo-700 focus:ring-indigo-500 focus:ring-offset-indigo-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg ">
-                Fechar
-            </button>
-            
-          </div>
-        </div>
-      )}
-     
+    
+    {modal && <Modal indice={indice} getId={getId}/>}
+    
     </>
   
     )
 }
+
+export default Cards;
